@@ -6,4 +6,3 @@ bs4
 google_play_scraper
 nltk
 pandas
-re
