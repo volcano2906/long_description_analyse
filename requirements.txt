@@ -2,12 +2,8 @@ selenium
 streamlit
 seleniumbase
 webdriver-manager
-nltk.corpus
 bs4
 google_play_scraper
-nltk.stem
-nltk.tokenize
-spacy
-pandas
 nltk
+pandas
 re
