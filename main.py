@@ -8,17 +8,18 @@ st.write("Analyze keyword usage in your data")
 
 # Get user input for data and keywords
 you_long = st.text_area("Please write your data:", "", height=400)  # Increase the height
-
 # Add a placeholder to suggest keywords
 placeholder_text = "ai, ai generator, ai art generator, generate art"
 girilen_kelimeler = st.text_input("Please write your keywords (comma-separated):", placeholder=placeholder_text)
 
 # Remove spaces and split keywords by commas
-girilen_kelimeler = [keyword.strip() for keyword in girilen_kelimeler.split(",") if keyword.strip()]
+girilen_kelimeler = girilen_kelimeler.replace(" ", "").split(",")
+
+
 
 if you_long and girilen_kelimeler:
     # Split and sort the keywords
-    girilen_kelimeler_sorted = sorted(girilen_kelimeler, key=lambda x: len(x), reverse=True)
+    girilen_kelimeler_sorted = sorted(girilen_kelimeler.split(","), key=lambda x: len(x), reverse=True)
 
     # Analyze keyword usage
     hedef_keliemler_adet = {}
@@ -45,7 +46,7 @@ if you_long and girilen_kelimeler:
     df = pd.DataFrame(list(hedef_keliemler_adet.items()), columns=["Keyword", "Count"])
 
     # Calculate the percentage of keyword usage
-    df["Percentage"] = round((df["Count"] / len(girilen_kelimeler_sorted)) * 100)
+    df["Percentage"] = round((df["Count"] / len(you_long.split(","))) * 100)
 
     # Sort the DataFrame by Count in descending order
     df = df.sort_values(by="Count", ascending=False)
