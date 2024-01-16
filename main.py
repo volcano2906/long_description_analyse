@@ -4,9 +4,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from nltk.corpus import stopwords
 from bs4 import BeautifulSoup
 from google_play_scraper import app
-from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
-import spacy
 import pandas as pd
 from nltk import ngrams
 import re
