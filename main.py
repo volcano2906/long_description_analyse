@@ -11,13 +11,15 @@ you_long = st.text_area("Please write your data:", "", height=400)  # Increase t
 # Add a placeholder to suggest keywords
 placeholder_text = "ai, ai generator, ai art generator, generate art"
 girilen_kelimeler = st.text_input("Please write your keywords (comma-separated):", placeholder=placeholder_text)
+girilen_kelimeler_temiz = ",".join([keyword.strip() for keyword in girilen_kelimeler.split(",") if keyword.strip()])
 
 
 
 
-if you_long and girilen_kelimeler:
+
+if you_long and girilen_kelimeler_temiz:
     # Split and sort the keywords
-    girilen_kelimeler_sorted = sorted(girilen_kelimeler.split(","), key=lambda x: len(x), reverse=True)
+    girilen_kelimeler_sorted = sorted(girilen_kelimeler_temiz.split(","), key=lambda x: len(x), reverse=True)
 
     # Analyze keyword usage
     hedef_keliemler_adet = {}
