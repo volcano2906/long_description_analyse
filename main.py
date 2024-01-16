@@ -13,7 +13,7 @@ placeholder_text = "ai, ai generator, ai art generator, generate art"
 girilen_kelimeler = st.text_input("Please write your keywords (comma-separated):", placeholder=placeholder_text)
 
 # Remove spaces and split keywords by commas
-girilen_kelimeler = girilen_kelimeler.replace(" ", "").split(",")
+girilen_kelimeler = [keyword.strip() for keyword in girilen_kelimeler.split(",") if keyword.strip()]
 
 
 
@@ -40,7 +40,7 @@ if you_long and girilen_kelimeler:
         return hedef_keliemler_adet
 
     # Analyze keyword usage
-    hedef_keliemler_adet = kontrol_keyword_usage(you_long, girilen_kelimeler_sorted)
+    hedef_keliemler_adet = kontrol_keyword_usage(you_long, girilen_kelimeler)
 
     # Convert the dictionary to a DataFrame
     df = pd.DataFrame(list(hedef_keliemler_adet.items()), columns=["Keyword", "Count"])
