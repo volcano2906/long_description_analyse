@@ -12,8 +12,6 @@ you_long = st.text_area("Please write your data:", "", height=400)  # Increase t
 placeholder_text = "ai, ai generator, ai art generator, generate art"
 girilen_kelimeler = st.text_input("Please write your keywords (comma-separated):", placeholder=placeholder_text)
 
-# Remove spaces and split keywords by commas
-girilen_kelimeler = girilen_kelimeler.replace(" ", "").split(",")
 
 
 
