@@ -53,4 +53,4 @@ if you_long and girilen_kelimeler_temiz:
 
     # Display the DataFrame
     st.header("Keyword Usage Analysis")
-    st.dataframe(df,height=200, width=1000)
+    st.dataframe(df.set_index(df.columns[0]),height=200, width=1000)
