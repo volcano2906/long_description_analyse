@@ -7,8 +7,15 @@ st.title("Keyword Usage Analyzer")
 st.write("Analyze keyword usage in your data")
 
 # Get user input for data and keywords
-you_long = st.text_area("Please write your data:", "")
-girilen_kelimeler = st.text_input("Please write your keywords (comma-separated):", "")
+you_long = st.text_area("Please write your data:", "", height=400)  # Increase the height
+# Add a placeholder to suggest keywords
+placeholder_text = "ai, ai generator, ai art generator, generate art"
+girilen_kelimeler = st.text_input("Please write your keywords (comma-separated):", placeholder=placeholder_text)
+
+# Remove spaces and split keywords by commas
+girilen_kelimeler = girilen_kelimeler.replace(" ", "").split(",")
+
+
 
 if you_long and girilen_kelimeler:
     # Split and sort the keywords
