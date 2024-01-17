@@ -9,7 +9,7 @@ st.write("Analyze keyword usage in your data")
 
 # Get user input for data and keywords
 you_long = st.text_area("Please write your data:", "", height=400) # Increase the height
-st.write("Total number of keywords:", len(you_long.split()))
+st.write("Total number of keywords:", len(you_long.split()), "Number of chracters:",)
 # Add a placeholder to suggest keywords
 placeholder_text = "ai, ai generator, ai art generator, generate art"
 girilen_kelimeler = st.text_input("Please write your keywords (comma-separated):", placeholder=placeholder_text)
@@ -24,16 +24,11 @@ if you_long and girilen_kelimeler_temiz:
     hedef_keliemler_adet = {}
 
     def kontrol_keyword_usage(long_description, kontrol_kelimeleri):
-        long_description_2 = long_description
-        long_description_nonsembol = re.sub(r'\W+', ' ', long_description_2)
-        long_description_leng = len(long_description_nonsembol.split())
-        longdescriptionLower = long_description.lower()
-
         for av in kontrol_kelimeleri:
             sayı = 0
-            if re.findall('\\b' + av + '\\b', longdescriptionLower):
-                sayı = len([*re.finditer('\\b' + av + '\\b', longdescriptionLower)])
-                longdescriptionLower = re.sub('\\b' + av + '\\b', "", longdescriptionLower)
+            if re.findall('\\b' + av + '\\b', long_description.lower()):
+                sayı = len([*re.finditer('\\b' + av + '\\b', long_description.lower())])
+                long_description = re.sub('\\b' + av + '\\b', "", long_description.lower())
             hedef_keliemler_adet[av] = sayı
 
         return hedef_keliemler_adet
@@ -52,4 +47,4 @@ if you_long and girilen_kelimeler_temiz:
 
     # Display the DataFrame
     st.header("Keyword Usage Analysis")
-    st.dataframe(df.set_index(df.columns[0]),height=200, width=1000)
+    st.dataframe(df.set_index(df.columns[0]),height=300, width=1000)
