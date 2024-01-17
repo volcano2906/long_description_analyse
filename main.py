@@ -28,7 +28,7 @@ if you_long and girilen_kelimeler_temiz:
         for av in kontrol_kelimeleri:
             sayı = 0
             if re.findall('\\b' + av + '\\b', long_lower):
-                sayı = len([*re.finditer('\\b' + av + '\\b', long_lower])
+                sayı = len([*re.finditer('\\b' + av + '\\b', longdescriptionLower)])
                 long_lower = re.sub('\\b' + av + '\\b', "", long_lower)
             hedef_keliemler_adet[av] = sayı
         return hedef_keliemler_adet
