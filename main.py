@@ -24,13 +24,13 @@ if you_long and girilen_kelimeler_temiz:
     hedef_keliemler_adet = {}
 
     def kontrol_keyword_usage(long_description, kontrol_kelimeleri):
+        long_lower=long_description.lower()
         for av in kontrol_kelimeleri:
             sayı = 0
-            if re.findall('\\b' + av + '\\b', long_description.lower()):
-                sayı = len([*re.finditer('\\b' + av + '\\b', long_description.lower())])
-                long_description = re.sub('\\b' + av + '\\b', "", long_description.lower())
+            if re.findall('\\b' + av + '\\b', long_lower):
+                sayı = len([*re.finditer('\\b' + av + '\\b', long_lower])
+                long_lower = re.sub('\\b' + av + '\\b', "", long_lower)
             hedef_keliemler_adet[av] = sayı
-
         return hedef_keliemler_adet
 
     # Analyze keyword usage
