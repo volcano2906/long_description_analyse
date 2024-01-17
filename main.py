@@ -16,9 +16,6 @@ girilen_kelimeler = st.text_input("Please write your keywords (comma-separated):
 girilen_kelimeler_temiz = ",".join([keyword.strip() for keyword in girilen_kelimeler.split(",") if keyword.strip()])
 
 
-
-
-
 if you_long and girilen_kelimeler_temiz:
     # Split and sort the keywords
     girilen_kelimeler_sorted = sorted(girilen_kelimeler_temiz.split(","), key=lambda x: len(x), reverse=True)
@@ -48,7 +45,7 @@ if you_long and girilen_kelimeler_temiz:
     df = pd.DataFrame(list(hedef_keliemler_adet.items()), columns=["Keyword", "Count"])
 
     # Calculate the percentage of keyword usage
-    df["Percentage"] = round((df["Count"] / len(you_long.split(","))) * 100)
+    df["Percentage"] = round((df["Count"] / len(you_long.split())) * 100)
 
     # Sort the DataFrame by Count in descending order
     df = df.sort_values(by="Count", ascending=False)
