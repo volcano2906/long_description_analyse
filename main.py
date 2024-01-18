@@ -40,7 +40,7 @@ if you_long and girilen_kelimeler_temiz:
     df = pd.DataFrame(list(hedef_keliemler_adet.items()), columns=["Keyword", "Count"])
 
     # Calculate the percentage of keyword usage
-    df["Percentage"] = round((df["Count"] / len(you_long.split())) * 100)
+    df["Percentage"] = round(((df["Count"] / len(you_long.split())) * 100),1)
 
     # Sort the DataFrame by Count in descending order
     df = df.sort_values(by="Count", ascending=False)
